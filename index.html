@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WriterStyle · 笔风测试</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<main class="container">
+
+    <!-- 开始页面 -->
+    <section id="startPage" class="page active">
+        <div class="logo">WRITERSTYLE</div>
+
+        <h1>你的笔风是什么？</h1>
+
+        <p class="subtitle">
+            一场关于文字、情绪与叙事方式的测试
+        </p>
+
+        <div class="intro-card">
+            <div class="dimension">
+                <span class="big-letter">E</span>
+                <div>
+                    <strong>情绪表达</strong>
+                    <small>直抒 ↔ 克制</small>
+                </div>
+            </div>
+
+            <div class="dimension">
+                <span class="big-letter">I</span>
+                <div>
+                    <strong>信息呈现</strong>
+                    <small>直给 ↔ 留白</small>
+                </div>
+            </div>
+
+            <div class="dimension">
+                <span class="big-letter">T</span>
+                <div>
+                    <strong>结构张力</strong>
+                    <small>平稳 ↔ 反差</small>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="dimension secondary">
+                <span class="big-letter">Q</span>
+                <div>
+                    <strong>语言质感</strong>
+                    <small>简洁 ↔ 诗性</small>
+                </div>
+            </div>
+
+            <div class="dimension secondary">
+                <span class="big-letter">V</span>
+                <div>
+                    <strong>画面构建</strong>
+                    <small>抽象 ↔ 具象</small>
+                </div>
+            </div>
+        </div>
+
+        <p class="notice">
+            共 20 题 · 大约 5 分钟<br>
+            没有正确答案，请选择最接近你真实写法的一项。
+        </p>
+
+        <button id="startBtn" class="main-btn">
+            开始测试
+        </button>
+    </section>
+
+
+    <!-- 测试页面 -->
+    <section id="testPage" class="page">
+
+        <div class="test-header">
+            <div class="logo">WRITERSTYLE</div>
+
+            <div class="progress-info">
+                <span id="questionNumber">01</span>
+                <span>/ 20</span>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div id="progress" class="progress"></div>
+        </div>
+
+        <div class="question-card">
+
+            <div id="dimensionLabel" class="question-dimension">
+                情绪表达
+            </div>
+
+            <h2 id="questionText"></h2>
+
+            <div id="options" class="options"></div>
+
+        </div>
+
+        <div class="bottom-info">
+            <span>请选择最接近你写作习惯的选项</span>
+        </div>
+
+    </section>
+
+
+    <!-- 结果页面 -->
+    <section id="resultPage" class="page">
+
+        <div class="result-top">
+            <div class="logo">YOUR WRITING STYLE</div>
+
+            <button id="restartBtn" class="restart-btn">
+                重新测试
+            </button>
+        </div>
+
+        <div class="result-code" id="resultCode">
+            CLR-YC
+        </div>
+
+        <h1 id="resultTitle">
+            静夜暗潮
+        </h1>
+
+        <p id="resultSubtitle" class="result-subtitle">
+            温柔的表面之下，隐藏着尚未说出口的东西。
+        </p>
+
+
+        <!-- 雷达图 -->
+        <div class="radar-container">
+            <canvas id="radarCanvas" width="400" height="400"></canvas>
+        </div>
+
+
+        <!-- 五维结果 -->
+        <div class="result-card">
+
+            <h3>你的笔风结构</h3>
+
+            <div class="result-dimensions">
+
+                <div class="result-dimension main">
+                    <span>E</span>
+                    <div>
+                        <strong id="eResult"></strong>
+                        <small>情绪表达</small>
+                    </div>
+                </div>
+
+                <div class="result-dimension main">
+                    <span>I</span>
+                    <div>
+                        <strong id="iResult"></strong>
+                        <small>信息呈现</small>
+                    </div>
+                </div>
+
+                <div class="result-dimension main">
+                    <span>T</span>
+                    <div>
+                        <strong id="tResult"></strong>
+                        <small>结构张力</small>
+                    </div>
+                </div>
+
+                <div class="result-dimension secondary">
+                    <span>Q</span>
+                    <div>
+                        <strong id="qResult"></strong>
+                        <small>语言质感</small>
+                    </div>
+                </div>
+
+                <div class="result-dimension secondary">
+                    <span>V</span>
+                    <div>
+                        <strong id="vResult"></strong>
+                        <small>画面构建</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 分析 -->
+        <div class="analysis-card">
+
+            <h3>笔风分析</h3>
+
+            <p id="resultDescription"></p>
+
+            <div class="analysis-grid">
+
+                <div>
+                    <h4>你可能擅长</h4>
+                    <p id="strengthText"></p>
+                </div>
+
+                <div>
+                    <h4>文字给人的感觉</h4>
+                    <p id="feelingText"></p>
+                </div>
+
+                <div>
+                    <h4>适合的写法</h4>
+                    <p id="writingText"></p>
+                </div>
+
+                <div>
+                    <h4>容易出现的特点</h4>
+                    <p id="weaknessText"></p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="result-footer">
+            WRITERSTYLE · Find the way you write.
+        </div>
+
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>
